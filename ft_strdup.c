@@ -6,13 +6,13 @@
 /*   By: aabouqas <aabouqas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 19:12:00 by aabouqas          #+#    #+#             */
-/*   Updated: 2023/11/01 19:21:59 by aabouqas         ###   ########.fr       */
+/*   Updated: 2023/11/05 11:01:41 by aabouqas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t ft_strlen(const char *str)
+static size_t slen(const char *str)
 {
 	size_t	i;
 
@@ -26,7 +26,7 @@ char *ft_strdup(const char *s1)
 	char	*ptr;
 	int		i;
 
-	ptr = malloc(ft_strlen(s1) + 1);
+	ptr = malloc(slen(s1) + 1);
 	i = 0;
 	while (s1[i])
 	{

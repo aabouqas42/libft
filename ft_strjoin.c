@@ -1,46 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aabouqas <aabouqas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/31 15:38:30 by aabouqas          #+#    #+#             */
-/*   Updated: 2023/11/03 11:26:22 by aabouqas         ###   ########.fr       */
+/*   Created: 2023/11/02 22:14:31 by aabouqas          #+#    #+#             */
+/*   Updated: 2023/11/04 22:55:14 by aabouqas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	white_spaces(char c)
+static	size_t	slen(const char *str)
 {
-	return ((c >= 9 && c <= 13) || (c == 32));
+	size_t	len;
+
+	len = 0;
+	while (str[len])
+		len++;
+	return (len);
 }
 
-int	ft_atoi(const char *str)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	int	s;
-	int	r;
+	char	*str;
+	size_t	len;
 
-	s = 1;
-	r = 0;
-	while (white_spaces(*str))
-		str++;
-
-	if (*str == '-' || *str == '+')
-	{
-		if(*str == '-')
-			s = -1;
-		str++;
-	}
-
-	while (*str)
-	{
-		if (*str >= '0' && *str <= '9')
-			r = r * 10 + (*str - 48);
-		else
-			break ;
-		str++;
-	}
-	return (r * s);
+	len = 0;
+	if (s1 && *s1)
+		len += slen(s1);
+	if (s2 && *s2)
+		len += slen(s2);
+	str = malloc (len + 1);
+	len = 0;
+	if (s1)
+		while (*s1)
+			str[len++] = *s1++;
+	if (s2)
+		while (*s2)
+			str[len++] = *s2++;
+	str[len] = 0;
+	return (str);
 }
+
+

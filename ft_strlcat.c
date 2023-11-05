@@ -1,46 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aabouqas <aabouqas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/31 15:38:30 by aabouqas          #+#    #+#             */
-/*   Updated: 2023/11/03 11:26:22 by aabouqas         ###   ########.fr       */
+/*   Created: 2023/11/02 16:09:00 by aabouqas          #+#    #+#             */
+/*   Updated: 2023/11/05 11:05:45 by aabouqas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	white_spaces(char c)
+static size_t	slen(const char *str)
 {
-	return ((c >= 9 && c <= 13) || (c == 32));
+	size_t	length;
+
+	length = 0;
+	while (str[length])
+		length++;
+	return (length);
 }
 
-int	ft_atoi(const char *str)
+size_t ft_strlcat(char *dest, const char *src, size_t dstsize)
 {
-	int	s;
-	int	r;
+	size_t	len;
+	size_t	i;
 
-	s = 1;
-	r = 0;
-	while (white_spaces(*str))
-		str++;
-
-	if (*str == '-' || *str == '+')
+	len = slen(dest);
+	i = 0;
+	while (src[i] && dstsize)
 	{
-		if(*str == '-')
-			s = -1;
-		str++;
+		dest[len] = src[i];
+		len++;
+		i++;
+		dstsize--;
 	}
-
-	while (*str)
-	{
-		if (*str >= '0' && *str <= '9')
-			r = r * 10 + (*str - 48);
-		else
-			break ;
-		str++;
-	}
-	return (r * s);
+	dest[len] = 0;
+	return (len + i);
 }

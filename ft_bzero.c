@@ -6,7 +6,7 @@
 /*   By: aabouqas <aabouqas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 17:00:47 by aabouqas          #+#    #+#             */
-/*   Updated: 2023/10/31 22:55:03 by aabouqas         ###   ########.fr       */
+/*   Updated: 2023/11/05 13:33:54 by aabouqas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	ft_bzero(void *s, size_t n)
 	size_t	i;
 
 	i = 0;
-	p = s;
+	p = (char *)s;
 	while (p[i] && i < n)
 	{
 		p[i] = 0;

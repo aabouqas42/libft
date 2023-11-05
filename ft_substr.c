@@ -1,46 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aabouqas <aabouqas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/31 15:38:30 by aabouqas          #+#    #+#             */
-/*   Updated: 2023/11/03 11:26:22 by aabouqas         ###   ########.fr       */
+/*   Created: 2023/11/01 22:31:13 by aabouqas          #+#    #+#             */
+/*   Updated: 2023/11/05 13:27:53 by aabouqas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	white_spaces(char c)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	return ((c >= 9 && c <= 13) || (c == 32));
-}
+	unsigned int	i;
+	size_t			j;
+	size_t			slen;
+	char			*str1;
+	char			*str2;
 
-int	ft_atoi(const char *str)
-{
-	int	s;
-	int	r;
-
-	s = 1;
-	r = 0;
-	while (white_spaces(*str))
-		str++;
-
-	if (*str == '-' || *str == '+')
+	str1 = (char *)s;
+	slen = ft_strlen(s);
+	j = 0;
+	if (start < slen)
+		str1 += start;
+	while (s[j] && j < len)
+		j++;
+	str2 = malloc (j + 1);
+	if (!str2)
+		return (0);
+	i = 0;
+	while (str1[i] && i < len && start < slen)
 	{
-		if(*str == '-')
-			s = -1;
-		str++;
+		str2[i] = str1[i];
+		i++;
 	}
-
-	while (*str)
-	{
-		if (*str >= '0' && *str <= '9')
-			r = r * 10 + (*str - 48);
-		else
-			break ;
-		str++;
-	}
-	return (r * s);
+	str2[i] = '\0';
+	return (str2);
 }
