@@ -6,7 +6,7 @@
 /*   By: aabouqas <aabouqas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 19:12:00 by aabouqas          #+#    #+#             */
-/*   Updated: 2023/11/05 11:01:41 by aabouqas         ###   ########.fr       */
+/*   Updated: 2023/11/05 21:15:12 by aabouqas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ char *ft_strdup(const char *s1)
 	int		i;
 
 	ptr = malloc(slen(s1) + 1);
+	if (!ptr)
+		return (0);
 	i = 0;
 	while (s1[i])
 	{

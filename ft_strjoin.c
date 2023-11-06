@@ -6,7 +6,7 @@
 /*   By: aabouqas <aabouqas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 22:14:31 by aabouqas          #+#    #+#             */
-/*   Updated: 2023/11/04 22:55:14 by aabouqas         ###   ########.fr       */
+/*   Updated: 2023/11/05 21:15:31 by aabouqas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	if (s2 && *s2)
 		len += slen(s2);
 	str = malloc (len + 1);
+	if (!str)
+		return (0);
 	len = 0;
 	if (s1)
 		while (*s1)

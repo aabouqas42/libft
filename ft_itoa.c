@@ -6,7 +6,7 @@
 /*   By: aabouqas <aabouqas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/05 15:57:51 by aabouqas          #+#    #+#             */
-/*   Updated: 2023/11/05 16:55:26 by aabouqas         ###   ########.fr       */
+/*   Updated: 2023/11/05 19:01:43 by aabouqas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,17 @@ int	negative(int n)
 	return (n < 0);
 }
 
-int	intlen(int	n)
+int	intlen(int n)
 {
-	int			len;
-	unsigned	num;
+	int	len;
+	int	num;
 
 	len = 0;
 	num = n;
-	if (negative(n))
-		n *= (-1);
+	if (n == 0)
+		return (1);
+	if (num < 0)
+		num *= (-1);
 	while (num)
 	{
 		num /= 10;
@@ -35,42 +37,56 @@ int	intlen(int	n)
 	return (len);
 }
 
-char	*ft_itoa(int n)
+char	*scpy(char *dest, char *src)
 {
-	char			*str;
-	char			*nums;
-	int				i;
-	unsigned	num;
+	int	i;
 
-	nums = "0123456789";
-	num = n;
 	i = 0;
-	if (n < 0)
+	while (src[i])
 	{
-		num *= (-1);
+		dest[i] = src[i];
 		i++;
 	}
-	i = intlen(num);
-	str = malloc (i + 1);
-	str[i] = 0;
-	//printf("len %d\n", i);
-	i--;
+	dest[i] = 0;
+	return (dest);
+}
 
-	while (num)
-	{
-		str[i] = nums[num % 10];
-		//printf("%c\n", str[i]);
-		num /= 10;
-		i--;
-	}
-	if (negative(n))
-		str[0] = '-';
+char	*set(int n)
+{
+	char	*str;
+
+	str = malloc (2);
+	if (!str)
+		return (0);
+	str[0] = '0';
+	str[1] = '\0';
 	return (str);
 }
 
-int main()
+char	*ft_itoa(int n)
 {
-	char *s = ft_itoa(-26654);
-	//int n = (int)2147483647;
-	printf("%s\n",  s);
+	char	*str;
+	int		len;
+	int		num;
+
+	num = n;
+	if (n == 0)
+		return (set(0));
+	len = intlen(num);
+	if (n < 0)
+	{
+		len++;
+		num *= (-1);
+	}
+	str = malloc (len + 1);
+	if (!str)
+		return (0);
+	if (n == -2147483648)
+		return (scpy(str, "-2147483648"));
+	str[len--] = 0;
+	while (num)
+		str[len--] = (num % 10) + 48 + ((num /= 10) * 0);
+	if (n < 0)
+		str[0] = '-';
+	return (str);
 }

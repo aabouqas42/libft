@@ -6,7 +6,7 @@
 /*   By: aabouqas <aabouqas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 11:26:45 by aabouqas          #+#    #+#             */
-/*   Updated: 2023/11/05 11:00:03 by aabouqas         ###   ########.fr       */
+/*   Updated: 2023/11/05 23:43:34 by aabouqas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ char	*ft_strldub(char *str, size_t len)
 
 	i = 0;
 	p = malloc(len + 1);
+	if (!p)
+		return (0);
 	while (str[i] && len)
 	{
 		p[i] = str[i];
