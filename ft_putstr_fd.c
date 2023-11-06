@@ -1,46 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aabouqas <aabouqas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/31 15:38:30 by aabouqas          #+#    #+#             */
-/*   Updated: 2023/11/06 15:56:58 by aabouqas         ###   ########.fr       */
+/*   Created: 2023/11/06 18:40:23 by aabouqas          #+#    #+#             */
+/*   Updated: 2023/11/06 18:42:40 by aabouqas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	white_spaces(char c)
+static size_t	slen(char *str)
 {
-	return ((c >= 9 && c <= 13) || (c == 32));
+	size_t	i;
+
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
 }
 
-int	ft_atoi(const char *str)
+void	ft_putstr_fd(char *s, int fd)
 {
-	int	s;
-	int	r;
-
-	s = 1;
-	r = 0;
-	while (white_spaces(*str))
-		str++;
-
-	if (*str == '-' || *str == '+')
-	{
-		if(*str == '-')
-			s = -1;
-		str++;
-	}
-
-	while (*str)
-	{
-		if (*str >= '0' && *str <= '9')
-			r = r * 10 + (*str - 48);
-		else
-			break ;
-		str++;
-	}
-	return (r * s);
+	write (fd, s, slen(s));
 }

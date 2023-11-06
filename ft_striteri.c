@@ -1,46 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aabouqas <aabouqas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/31 15:38:30 by aabouqas          #+#    #+#             */
-/*   Updated: 2023/11/06 15:56:58 by aabouqas         ###   ########.fr       */
+/*   Created: 2023/11/06 17:31:16 by aabouqas          #+#    #+#             */
+/*   Updated: 2023/11/06 17:36:22 by aabouqas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	white_spaces(char c)
+void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 {
-	return ((c >= 9 && c <= 13) || (c == 32));
-}
+	size_t	i;
 
-int	ft_atoi(const char *str)
-{
-	int	s;
-	int	r;
-
-	s = 1;
-	r = 0;
-	while (white_spaces(*str))
-		str++;
-
-	if (*str == '-' || *str == '+')
+	i = 0;
+	while (s[i])
 	{
-		if(*str == '-')
-			s = -1;
-		str++;
+		f(i, &s[i]);
+		i++;
 	}
-
-	while (*str)
-	{
-		if (*str >= '0' && *str <= '9')
-			r = r * 10 + (*str - 48);
-		else
-			break ;
-		str++;
-	}
-	return (r * s);
 }

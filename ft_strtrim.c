@@ -6,7 +6,7 @@
 /*   By: aabouqas <aabouqas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 11:26:45 by aabouqas          #+#    #+#             */
-/*   Updated: 2023/11/05 23:43:34 by aabouqas         ###   ########.fr       */
+/*   Updated: 2023/11/06 15:31:53 by aabouqas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,15 @@
 
 size_t	slen(const char *str)
 {
-	size_t	len;
+	size_t	i;
 
-	len = 0;
-	while (str[len])
-		len++;
-	return (len);
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
 }
 
-int	found(const char *str, const char c)
+int	find(const char *str, char c)
 {
 	size_t	i;
 
@@ -36,52 +36,35 @@ int	found(const char *str, const char c)
 	return (0);
 }
 
-char	*ft_strldub(char *str, size_t len)
-{
-	size_t	i;
-	char	*p;
-
-	i = 0;
-	p = malloc(len + 1);
-	if (!p)
-		return (0);
-	while (str[i] && len)
-	{
-		p[i] = str[i];
-		len--;
-		i++;
-	}
-	p[i] = 0;
-	return (p);
-}
-
-char	*ft_strcpy(char *dest, const char *src)
-{
-	size_t	i;
-
-	i = 0;
-	while (src[i])
-	{
-		dest[i] = src[i];
-		i++;
-	}
-	dest[i] = 0;
-	return (dest);
-}
-
 char	*ft_strtrim(char const *s1, char const *set)
 {
 	char	*str;
-	size_t	len;
+	size_t	s;
+	size_t	e;
+	size_t	i;
 
-	str = malloc (slen(s1) + 1);
+	s = 0;
+	if (!s1 || !set)
+		return (0);
+	while (find(set, s1[s]))
+		s++;
+	if (!s1[s])
+		return (ft_strdup(""));
+	e = slen(s1) - 1;
+	while (find(set, s1[e]))
+		e--;
+	str = malloc ((e - s) + 2);
 	if (!str)
 		return (0);
-	ft_strcpy(str, s1);
-	while (found(set, *str))
-		str++;
-	len = slen(str) - 1;
-	while (found(set, str[len]))
-		len--;
-	return (ft_strldub(str, len + 1));
+	i = 0;
+	while (s <= e)
+	{
+		str[i] = s1[s];
+		s++;
+		i++;
+	}
+	str[i] = '\0';
+	return (str);
 }
+
+
