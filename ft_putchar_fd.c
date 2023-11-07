@@ -6,12 +6,11 @@
 /*   By: aabouqas <aabouqas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 18:01:12 by aabouqas          #+#    #+#             */
-/*   Updated: 2023/11/06 18:34:38 by aabouqas         ###   ########.fr       */
+/*   Updated: 2023/11/07 19:48:55 by aabouqas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include<fcntl.h>
 
 void	ft_putchar_fd(char c, int fd)
 {

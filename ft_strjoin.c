@@ -6,7 +6,7 @@
 /*   By: aabouqas <aabouqas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 22:14:31 by aabouqas          #+#    #+#             */
-/*   Updated: 2023/11/05 21:15:31 by aabouqas         ###   ########.fr       */
+/*   Updated: 2023/11/07 20:01:22 by aabouqas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,5 +45,3 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	str[len] = 0;
 	return (str);
 }
-
-

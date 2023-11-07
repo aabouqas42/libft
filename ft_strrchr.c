@@ -1,44 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aabouqas <aabouqas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/31 15:38:30 by aabouqas          #+#    #+#             */
-/*   Updated: 2023/11/07 17:06:17 by aabouqas         ###   ########.fr       */
+/*   Created: 2023/10/31 22:03:46 by aabouqas          #+#    #+#             */
+/*   Updated: 2023/11/07 20:46:27 by aabouqas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#define uchar unsigned char
 
-int	white_spaces(char c)
+char	*ft_strrchr(const char *s, int c)
 {
-	return ((c >= 9 && c <= 13) || (c == 32));
-}
+	size_t	i;
+	char	*cc;
 
-int	ft_atoi(const char *str)
-{
-	int	s;
-	int	r;
-
-	s = 1;
-	r = 0;
-	while (white_spaces(*str))
-		str++;
-	if (*str == '-' || *str == '+')
+	cc = 0;
+	while (*s)
 	{
-		if (*str == '-')
-			s = -1;
-		str++;
+		if ((uchar)*s == (uchar)c)
+			cc = (char *)s;
+		s++;
 	}
-	while (*str)
-	{
-		if (*str >= '0' && *str <= '9')
-			r = r * 10 + (*str - 48);
-		else
-			break ;
-		str++;
-	}
-	return (r * s);
+	if ((uchar)*s == (uchar)c)
+		return ((char *)s);
+	return (cc);
 }

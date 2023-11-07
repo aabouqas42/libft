@@ -6,7 +6,7 @@
 /*   By: aabouqas <aabouqas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 10:41:22 by aabouqas          #+#    #+#             */
-/*   Updated: 2023/11/05 21:28:44 by aabouqas         ###   ########.fr       */
+/*   Updated: 2023/11/07 19:48:22 by aabouqas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
-	char		*dst;
+	char	*dst;
 	char	*source;
-	size_t		i;
+	size_t	i;
 
 	dst = (char *)dest;
 	source = (char *)src;

@@ -6,21 +6,11 @@
 /*   By: aabouqas <aabouqas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 11:26:45 by aabouqas          #+#    #+#             */
-/*   Updated: 2023/11/06 15:31:53 by aabouqas         ###   ########.fr       */
+/*   Updated: 2023/11/07 20:05:04 by aabouqas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-size_t	slen(const char *str)
-{
-	size_t	i;
-
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
-}
 
 int	find(const char *str, char c)
 {
@@ -50,7 +40,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 		s++;
 	if (!s1[s])
 		return (ft_strdup(""));
-	e = slen(s1) - 1;
+	e = ft_strlen(s1) - 1;
 	while (find(set, s1[e]))
 		e--;
 	str = malloc ((e - s) + 2);
@@ -58,13 +48,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 		return (0);
 	i = 0;
 	while (s <= e)
-	{
-		str[i] = s1[s];
-		s++;
-		i++;
-	}
+		str[i++] = s1[s++];
 	str[i] = '\0';
 	return (str);
 }
-
-
