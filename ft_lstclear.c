@@ -1,19 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aabouqas <aabouqas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/06 18:40:23 by aabouqas          #+#    #+#             */
-/*   Updated: 2023/11/09 20:58:00 by aabouqas         ###   ########.fr       */
+/*   Created: 2023/11/10 19:11:21 by aabouqas          #+#    #+#             */
+/*   Updated: 2023/11/10 22:16:58 by aabouqas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putstr_fd(char *s, int fd)
+void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
-	if (s)
-		write (fd, s, ft_strlen((const char *)s));
+	t_list	*node;
+	t_list	*curr;
+
+	if (!lst || !*lst || !del)
+		return ;
+	node = *lst;
+	while (node)
+	{
+		curr = node->next;
+		del(node->content);
+		free (node);
+		node = curr;
+	}
+	*lst = NULL;
 }

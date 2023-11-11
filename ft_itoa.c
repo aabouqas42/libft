@@ -6,7 +6,7 @@
 /*   By: aabouqas <aabouqas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/05 15:57:51 by aabouqas          #+#    #+#             */
-/*   Updated: 2023/11/06 16:45:31 by aabouqas         ###   ########.fr       */
+/*   Updated: 2023/11/11 16:30:34 by aabouqas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ char	*scpy(char *dest, char *src)
 	return (dest);
 }
 
-char	*set(int n)
+char	*set(void)
 {
 	char	*str;
 
@@ -69,7 +69,7 @@ char	*ft_itoa(int n)
 	int		len;
 
 	if (n == 0)
-		return (set(0));
+		return (set());
 	len = intlen(n);
 	if (n < 0)
 		len++;

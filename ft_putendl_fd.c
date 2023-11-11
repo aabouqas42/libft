@@ -6,7 +6,7 @@
 /*   By: aabouqas <aabouqas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 19:07:23 by aabouqas          #+#    #+#             */
-/*   Updated: 2023/11/07 19:50:31 by aabouqas         ###   ########.fr       */
+/*   Updated: 2023/11/09 21:00:33 by aabouqas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 
 void	ft_putendl_fd(char *s, int fd)
 {
-	write (fd, s, ft_strlen((const char *)s));
-	write (fd, "\n", 1);
+	if (s)
+	{
+		write (fd, s, ft_strlen((const char *)s));
+		write (fd, "\n", 1);
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: aabouqas <aabouqas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 11:26:45 by aabouqas          #+#    #+#             */
-/*   Updated: 2023/11/07 20:05:04 by aabouqas         ###   ########.fr       */
+/*   Updated: 2023/11/09 21:27:41 by aabouqas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,29 +26,44 @@ int	find(const char *str, char c)
 	return (0);
 }
 
-char	*ft_strtrim(char const *s1, char const *set)
+static char	*ft_strncpy(char *dest, const char *src, size_t n)
 {
-	char	*str;
-	size_t	s;
-	size_t	e;
 	size_t	i;
 
-	s = 0;
-	if (!s1 || !set)
+	i = 0;
+	while (src[i] && i < n)
+	{
+		dest[i] = src[i];
+		i++;
+	}
+	dest[i] = 0;
+	return (dest);
+}
+
+char	*ft_strtrim(char const *s, char const *set)
+{
+	char	*str;
+	size_t	e;
+	size_t	len;
+
+	if (!s)
 		return (0);
-	while (find(set, s1[s]))
+	len = ft_strlen((const char *)s);
+	while (find(set, *s))
+	{
 		s++;
-	if (!s1[s])
+		len--;
+	}
+	e = ft_strlen(s) - 1;
+	if (!*s)
 		return (ft_strdup(""));
-	e = ft_strlen(s1) - 1;
-	while (find(set, s1[e]))
+	while (find(set, s[e]))
+	{
 		e--;
-	str = malloc ((e - s) + 2);
+		len--;
+	}
+	str = malloc (len + 1);
 	if (!str)
 		return (0);
-	i = 0;
-	while (s <= e)
-		str[i++] = s1[s++];
-	str[i] = '\0';
-	return (str);
+	return (ft_strncpy(str, s, len));
 }

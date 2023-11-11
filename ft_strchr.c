@@ -6,7 +6,7 @@
 /*   By: aabouqas <aabouqas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 10:59:51 by aabouqas          #+#    #+#             */
-/*   Updated: 2023/11/05 11:50:10 by aabouqas         ###   ########.fr       */
+/*   Updated: 2023/11/10 18:12:15 by aabouqas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,13 @@
 
 char	*ft_strchr(const char *s, int c)
 {
-	char	*p;
-
-	p = (char *)s;
-	if (c >= 0 && c <= 126)
+	while (*s)
 	{
-		while (*p && *p != c)
-			p++;
-		if (*p == c)
-			return (p);
+		if ((unsigned char)*s == (unsigned char)c)
+			return ((char *)s);
+		s++;
 	}
+	if ((unsigned char)*s == (unsigned char)c)
+		return ((char *)s);
 	return (0);
 }

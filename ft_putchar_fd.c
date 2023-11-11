@@ -6,7 +6,7 @@
 /*   By: aabouqas <aabouqas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 18:01:12 by aabouqas          #+#    #+#             */
-/*   Updated: 2023/11/07 19:48:55 by aabouqas         ###   ########.fr       */
+/*   Updated: 2023/11/11 16:33:26 by aabouqas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,8 @@
 
 void	ft_putchar_fd(char c, int fd)
 {
-	write (fd, &c, 1);
+	unsigned char	cc;
+
+	cc = (unsigned char)c;
+	write (fd, &cc, 1);
 }
