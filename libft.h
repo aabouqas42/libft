@@ -6,7 +6,7 @@
 /*   By: aabouqas <aabouqas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 10:37:38 by aabouqas          #+#    #+#             */
-/*   Updated: 2023/11/10 21:44:38 by aabouqas         ###   ########.fr       */
+/*   Updated: 2023/11/13 12:08:39 by aabouqas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,11 @@
 # define LIBFT_H
 
 # include <stdlib.h>
-# include <stdio.h>
 # include <unistd.h>
-# include <fcntl.h>
+
+// delete it :
+#include <stdio.h>
+#include <string.h>
 
 typedef struct s_list
 {

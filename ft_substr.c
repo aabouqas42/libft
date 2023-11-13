@@ -6,7 +6,7 @@
 /*   By: aabouqas <aabouqas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 22:31:13 by aabouqas          #+#    #+#             */
-/*   Updated: 2023/11/11 16:35:51 by aabouqas         ###   ########.fr       */
+/*   Updated: 2023/11/13 15:27:56 by aabouqas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	size_t			slen;
 	char			*str;
 
+	if (!s)
+		return (0);
 	slen = ft_strlen(s);
 	if (start >= slen)
 		return (ft_strdup(""));

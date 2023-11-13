@@ -6,7 +6,7 @@
 /*   By: aabouqas <aabouqas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 14:20:41 by aabouqas          #+#    #+#             */
-/*   Updated: 2023/11/08 18:38:42 by aabouqas         ###   ########.fr       */
+/*   Updated: 2023/11/13 16:17:27 by aabouqas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,6 @@ int	ft_memcmp(const void *s1, const void *s2, size_t n)
 	p1 = (unsigned char *)s1;
 	p2 = (unsigned char *)s2;
 	i = 0;
-	if (s1 == NULL && s2 == NULL)
-		return (-1);
 	while (i < n)
 	{
 		if (p1[i] != p2[i])

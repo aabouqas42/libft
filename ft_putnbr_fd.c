@@ -6,7 +6,7 @@
 /*   By: aabouqas <aabouqas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 19:13:41 by aabouqas          #+#    #+#             */
-/*   Updated: 2023/11/07 19:59:05 by aabouqas         ###   ########.fr       */
+/*   Updated: 2023/11/12 14:49:42 by aabouqas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ void	ft_putnbr_fd(int n, int fd)
 {
 	char	c;
 
+	if (fd < 0)
+		return ;
 	if (n == -2147483648)
 		write (fd, "-2147483648", 11);
 	else
@@ -37,3 +39,4 @@ void	ft_putnbr_fd(int n, int fd)
 		}
 	}
 }
+

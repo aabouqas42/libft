@@ -6,49 +6,31 @@
 /*   By: aabouqas <aabouqas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 14:28:06 by aabouqas          #+#    #+#             */
-/*   Updated: 2023/11/05 12:01:49 by aabouqas         ###   ########.fr       */
+/*   Updated: 2023/11/13 16:17:36 by aabouqas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static size_t	slen(const char *s)
-{
-	size_t	len;
-
-	len = 0;
-	while (s[len])
-		len++;
-	return (len);
-}
-
-static int	sncmp(const char *s1, const char *s2, size_t n)
-{
-	size_t	i;
-
-	i = 0;
-	while ((s1[i] || s2[i]) && i < n)
-	{
-		if (s1[i] != s2[i])
-			return (((char)s1[i]) - ((char)s2[i]));
-		i++;
-	}
-	return (0);
-}
-
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
 	size_t	i;
+	size_t	needlen;
+	int		same;
 
-	i = 0;
+
+	if (!haystack && !len)
+		return (0);
 	if (!*needle)
 		return ((char *)haystack);
+	needlen = ft_strlen(needle);
+	i = 0;
 	while (haystack[i] && len)
 	{
 		if (haystack[i] == *needle)
 		{
-			if (ft_strlen(needle) <= len
-				&& (sncmp(&haystack[i], needle, slen(needle)) == 0))
+			same = ft_strncmp(&haystack[i], needle, needlen);
+			if (len >= needlen && same == 0)
 				return ((char *)&haystack[i]);
 		}
 		i++;
